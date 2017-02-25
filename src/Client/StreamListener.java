@@ -26,8 +26,7 @@ public class StreamListener implements Runnable {
                 clientProcess.streamIn(in.readUTF());
             } catch (IOException e) {
                 //Catch and output exceptions when reading from stream
-                System.err.println("Failed to read from input stream...");
-                e.printStackTrace();
+                System.err.println("Server connection failed...");
                 clientProcess.closeStreams();
                 clientProcess.closeSocket();
                 System.exit(0);
