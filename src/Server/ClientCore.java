@@ -8,8 +8,8 @@ public class ClientCore implements Runnable {
     //Define networking variables
     private Socket socket;
     private StreamListener listener;
-    private ObjectInputStream in;
     private ObjectOutputStream out;
+    private ObjectInputStream in;
 
     //Define console input
     private Scanner console;
@@ -56,10 +56,10 @@ public class ClientCore implements Runnable {
         try {
             //Try to send next line from console to out stream
             Message msg = new Message("Test", console.nextLine());
-            if (!msg.getMessage().equals("")) {
+            //if (!msg.getMessage().equals("")) {
                 out.writeObject(msg);
                 out.flush();
-            }
+            //}
         } catch (IOException e) {
             //Catch and output errors when sending message
             System.err.println("Failed to send message from console...");
@@ -87,8 +87,8 @@ public class ClientCore implements Runnable {
     private void startStreams() {
         try {
             //Try to open streams and initialize in/out variables
-            in = new ObjectInputStream(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             //Catch and output errors when opening streams
             System.err.println("Failed to start streams...");
